@@ -1,0 +1,19 @@
+
+html, body{
+    width:100%;
+    min-height: 100vh;
+}
+
+body{
+    display:flex;
+    align-items:center;
+    justify-content: center;
+}
+
+.placeholder{
+    width: 50%;
+    margin:auto;
+    font-size: 5em;
+    font-family:monospace;
+    font-weight: 700;
+}
