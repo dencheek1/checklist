@@ -10,35 +10,35 @@ export const testJson = {
       properties: [],
       data: 'This is leaf node 1',
     },
-    {
-      childern: [],
-      nodeType: 'leaf',
-      properties: [],
-      data: 'This is leaf node 2',
-    },
-    {
-      childern: [],
-      nodeType: 'leaf',
-      properties: [],
-      data: 'This is leaf node 3',
-    },
-    {
-      childern: [
-        {
-          childern: [],
-          nodeType: 'leaf',
-          properties: [],
-          data: 'This is leaf node 4.1',
-        },
-        {
-          childern: [],
-          nodeType: 'leaf',
-          properties: [],
-          data: 'This is leaf node 4.2',
-        },
-      ],
-      nodeType: 'columns',
-      properties: [],
-    },
+    // {
+    //   childern: [],
+    //   nodeType: 'leaf',
+    //   properties: [],
+    //   data: 'This is leaf node 2',
+    // },
+    // {
+    //   childern: [],
+    //   nodeType: 'leaf',
+    //   properties: [],
+    //   data: 'This is leaf node 3',
+    // },
+    // {
+    //   childern: [
+    //     {
+    //       childern: [],
+    //       nodeType: 'leaf',
+    //       properties: [],
+    //       data: 'This is leaf node 4.1',
+    //     },
+    //     {
+    //       childern: [],
+    //       nodeType: 'leaf',
+    //       properties: [],
+    //       data: 'This is leaf node 4.2',
+    //     },
+    //   ],
+    //   nodeType: 'columns',
+    //   properties: [],
+    // },
   ],
 };

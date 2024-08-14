@@ -1,12 +1,4 @@
-@if(node && node.data){
-    <p class="box">{{node.data}}</p>
-}
-@else if(node){
-    @for(child of node.childern; track $index){
-        <ng-container *ngComponentOutlet="
-        getComponent(node.nodeType);
+<ng-container *ngComponentOutlet="
+        getComponent(node);
         inputs: {node: node};
       " />
-        <!-- <app-document-node-view [node] = "child"/> -->
-    }
-}

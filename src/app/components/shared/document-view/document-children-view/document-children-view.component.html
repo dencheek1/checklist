@@ -1,0 +1,4 @@
+@for (child of node.childern; track $index) {
+    <p>{{child.nodeType}}</p>
+    <app-document-node-view [node] = "child"/>
+}
