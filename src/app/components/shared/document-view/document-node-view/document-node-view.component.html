@@ -1,4 +1,10 @@
-<ng-container *ngComponentOutlet="
-        getComponent(node);
-        inputs: {node: node};
-      " />
+@switch(node.type){
+  @case ('leaf') {
+    <p>{{node.data}}</p>
+  }
+  @default {
+    @for (child of node.childern; track $index) {
+      <app-document-node-view [node]="child"/>
+    }
+  }
+}

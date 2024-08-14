@@ -1,7 +1,7 @@
 // Interface for document nodes.
 
 export interface DocumentNode {
-    nodeType : string;
+    type : string;
     childern : DocumentNode[];
     properties: string[]; 
     data?: string;
