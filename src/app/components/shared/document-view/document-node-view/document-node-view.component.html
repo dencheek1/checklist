@@ -1,10 +1,16 @@
+<div [class]="node.properties" >
 @switch(node.type){
   @case ('leaf') {
-    <p>{{node.data}}</p>
+    {{node.data}}}
+  @case ('columns'){
+    <app-document-table-view [node] = "node"/>
   }
   @default {
-    @for (child of node.childern; track $index) {
-      <app-document-node-view [node]="child"/>
+    @if(node.childern.length > 0){
+      @for (child of node.childern; track $index) {
+        <app-document-node-view [node]="child"/>
+      }
     }
   }
 }
+</div>

@@ -16,6 +16,5 @@ export class DocumentViewComponent implements OnInit {
   @Input() document!: DocumentNode;
 
   ngOnInit(): void {
-    console.log(document);
   }
 }

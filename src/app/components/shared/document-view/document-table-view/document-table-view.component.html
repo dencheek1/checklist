@@ -1,0 +1,7 @@
+<div class="columns">
+    @if(node.childern.length > 0){
+        @for (child of node.childern; track $index) {
+            <app-document-node-view [node]="child"/>
+        }
+    }
+</div>
