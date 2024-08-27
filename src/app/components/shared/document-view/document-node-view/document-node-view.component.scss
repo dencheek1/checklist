@@ -1,3 +1,5 @@
+@use '../../styles/document-properties';
+
 * {
   color: #e4e4e4;
   display: block;
@@ -5,32 +7,32 @@
   font-size: 1em;
 }
 
-.box {
-  width: 100%;
-//   height: 32px;
-  position: relative;
-  --size: 32px;
-  align-content: center;
-  &::before, &::after {
-    position: absolute;
-    display: block;
-    content: "";
-    width: calc(100% - var(--size)/2);
-    height: calc(100% - var(--size)/2);
-  }
+// .box {
+//   width: 100%;
+// //   height: 32px;
+//   position: relative;
+//   --size: 32px;
+//   align-content: center;
+//   &::before, &::after {
+//     position: absolute;
+//     display: block;
+//     content: "";
+//     width: calc(100% - var(--size)/2);
+//     height: calc(100% - var(--size)/2);
+//   }
 
-  &::before{
-    border-top:2px solid white;
-    border-right:2px solid white;
-    right: 0;
-  }
-  &::after{
-    border-bottom:2px solid white;
-    border-left:2px solid white;
-    left: 0;
-    bottom:0;
-  }
-}
+//   &::before{
+//     border-top:2px solid white;
+//     border-right:2px solid white;
+//     right: 0;
+//   }
+//   &::after{
+//     border-bottom:2px solid white;
+//     border-left:2px solid white;
+//     left: 0;
+//     bottom:0;
+//   }
+// }
 
 .data {
   margin: 0.5em;

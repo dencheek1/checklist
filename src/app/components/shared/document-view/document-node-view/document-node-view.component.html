@@ -1,4 +1,4 @@
-<div [class]="node.properties" >
+<div [class]="node.properties || ''" >
 @switch(node.type){
   @case ('leaf') {
     {{node.data}}}

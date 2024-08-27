@@ -60,7 +60,7 @@ export const testJson = {
         {
           childern: [],
           type: 'leaf',
-          properties: [],
+          properties: ['hover-effect'],
           data: 'This is leaf node 4.5',
         },
         {

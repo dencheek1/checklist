@@ -3,10 +3,11 @@ import { RouterOutlet } from '@angular/router';
 import { DocumentNode } from '../core/document-node';
 import { testJson } from '../../assets/checklist';
 import { DocumentViewComponent } from "./shared/document-view/document-view.component";
+import { DocumentEditPageComponent } from './document-edit-page/document-edit-page.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, DocumentViewComponent],
+  imports: [RouterOutlet, DocumentViewComponent, DocumentEditPageComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

@@ -16,6 +16,5 @@ export class DocumentNodeViewComponent implements OnInit{
   leafClass = this.node.properties; 
  ngOnInit(): void {
    console.log(this.leafClass);
-   console.log(...this.node.properties);
  }
 }

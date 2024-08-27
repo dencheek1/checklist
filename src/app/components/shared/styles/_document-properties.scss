@@ -1,0 +1,36 @@
+.box{
+    width: 100%;
+    min-height: 2em;
+    padding: 0 2em;
+  position: relative;
+  align-content: center;
+  &::before, &::after {
+    position: absolute;
+    display: block;
+    content: "";
+    width: calc(100% - 1em);
+    height: calc(100% - 1em);
+  }
+
+  &::before{
+    border-top:.125em solid white;
+    border-right:.125em solid white;
+    right: 0;
+  }
+  &::after{
+    border-bottom:.125em solid white;
+    border-left:.125em solid white;
+    left: 0;
+    bottom:0;
+  }
+}
+
+.bold{}
+
+.italik{}
+
+.size-20{}
+
+.hover-effect:hover{
+  background-color:red;
+}
