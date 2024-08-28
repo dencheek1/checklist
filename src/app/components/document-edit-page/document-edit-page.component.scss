@@ -18,9 +18,9 @@
   grid-template-columns: 160px 1fr 320px;
   column-gap: 10px;
   // font-size: 18px;
-    @media screen and (max-width: 1024px){
-        grid-template-columns: 80px 1fr 160px;
-    }
+  @media screen and (max-width: 1024px) {
+    grid-template-columns: 80px 1fr 160px;
+  }
   .preview {
     margin: 1em 0;
     font-size: 16px;
@@ -28,6 +28,9 @@
     align-self: center;
     aspect-ratio: 0.706;
     height: 50em;
+
+    border: solid 2px white;
+    overflow-y: scroll; //for now, should implement solution later
 
     @media screen and (max-width: 1280px) {
       font-size: 14px;

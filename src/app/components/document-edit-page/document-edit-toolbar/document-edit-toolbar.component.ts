@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-document-edit-toolbar',
@@ -8,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrl: './document-edit-toolbar.component.scss'
 })
 export class DocumentEditToolbarComponent {
+
+  @Output('addNode') addNodeEmitter = new EventEmitter; 
+
+  addNode(){
+    this.addNodeEmitter.emit();
+  }
 
 }

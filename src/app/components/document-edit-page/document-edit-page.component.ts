@@ -20,4 +20,13 @@ import { HeaderComponent } from '../shared/header/header.component';
 })
 export class DocumentEditPageComponent {
   document = testJson as DocumentNode;
+
+  addNode(){
+    this.document.childern.push({
+          childern: [],
+          type: 'leaf',
+          properties: [],
+          data: 'Added new leaf node',
+        })
+  }
 }
