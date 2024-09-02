@@ -1,16 +1,17 @@
-<div [class]="node.properties || ''" >
-@switch(node.type){
-  @case ('leaf') {
-    {{node.data}}}
-  @case ('columns'){
-    <app-document-table-view [node] = "node"/>
-  }
-  @default {
-    @if(node.childern.length > 0){
-      @for (child of node.childern; track $index) {
-        <app-document-node-view [node]="child"/>
+<div [class]="[node.properties ? node.properties: '', 'wrapper']" (mousemove)="hover($event)" (mouseleave)="mouseLeave()">
+  @switch(node.type){
+    @case ('leaf') {
+      {{node.data}}}
+    @case ('columns'){
+      <app-document-table-view [node] = "node"/>
+    }
+    @default {
+      @if(node.childern.length > 0){
+        @for (child of node.childern; track $index) {
+          <app-document-node-view [node]="child"/>
+        }
       }
     }
   }
-}
+  <div [class]="['remove--button', removeVisibilityLevel]" >remove</div>
 </div>

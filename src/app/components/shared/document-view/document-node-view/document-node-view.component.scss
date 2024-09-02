@@ -1,10 +1,14 @@
-@use '../../styles/document-properties';
+@use "../../styles/document-properties";
 
 * {
   color: #e4e4e4;
   display: block;
   width: 100%;
   font-size: 1em;
+}
+
+.wrapper{
+  position:relative;
 }
 
 // .box {
@@ -38,4 +42,30 @@
   margin: 0.5em;
   padding: 0 1em;
   width: 100%;
+}
+
+.remove--button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: red;
+  width: 25%;
+  transition: 0.3s;
+}
+
+.visibility-0 {
+  color: aqua;
+  opacity:0;
+}
+.visibility-1 {
+  display: block;
+  opacity: 0.25;
+}
+.visibility-2 {
+  display: block;
+  opacity: 0.6;
+}
+.visibility-3 {
+  display: block;
+  opacity: 1;
 }
