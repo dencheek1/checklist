@@ -15,6 +15,6 @@ export class DocumentTableViewComponent implements OnInit {
   @Input() node!: DocumentNode;
 
   ngOnInit(): void {
-    console.log(this.node)
+    console.log("children array length: " + this.node.children.length)
   }
 }

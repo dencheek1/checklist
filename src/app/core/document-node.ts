@@ -2,7 +2,7 @@
 
 export interface DocumentNode {
     type : string;
-    childern : DocumentNode[];
+    children : DocumentNode[];
     properties: string[]; 
     data?: string;
 }

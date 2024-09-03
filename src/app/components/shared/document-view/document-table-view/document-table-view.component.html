@@ -1,7 +1,10 @@
 <div class="columns">
-    @if(node.childern.length > 0){
-        @for (child of node.childern; track $index) {
+    @if(node.children.length > 0){
+        @for (child of node.children; track $index) {
             <app-document-node-view [node]="child"/>
         }
+    }
+    @else {
+        <div class="box"></div>
     }
 </div>

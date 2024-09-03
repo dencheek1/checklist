@@ -46,26 +46,15 @@
 
 .remove--button {
   position: absolute;
+  margin:4px;
   right: 0;
   top: 0;
+  background-color:yellow;
   color: red;
-  width: 25%;
-  transition: 0.3s;
-}
+  width: fit-content;
+  transition: 0.25s;
 
-.visibility-0 {
-  color: aqua;
-  opacity:0;
-}
-.visibility-1 {
-  display: block;
-  opacity: 0.25;
-}
-.visibility-2 {
-  display: block;
-  opacity: 0.6;
-}
-.visibility-3 {
-  display: block;
-  opacity: 1;
+  &:hover{
+    opacity: 1;
+  }
 }

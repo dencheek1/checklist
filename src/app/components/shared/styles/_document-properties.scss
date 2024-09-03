@@ -16,6 +16,7 @@
     border-top:.125em solid white;
     border-right:.125em solid white;
     right: 0;
+    top: 0;
   }
   &::after{
     border-bottom:.125em solid white;
@@ -25,11 +26,17 @@
   }
 }
 
-.bold{}
+.bold{
+  font-weight: 700;
+}
 
-.italik{}
+.italik{
+  font-style:italic;
+}
 
-.size-20{}
+.size-20{
+  font-size:1.25em;
+}
 
 .text__larg{
   font-size:3em;

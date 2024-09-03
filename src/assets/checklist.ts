@@ -3,78 +3,78 @@ import { DocumentNode } from '../app/core/document-node';
 export const testJson = {
   type: 'block',
   properties: ['bold', 'italik'],
-  childern: [
+  children: [
     {
-      childern: [],
+      children: [],
       type: 'leaf',
       properties: ['box'],
       data: 'This is leaf node 2',
     },
     {
-      childern: [],
+      children: [],
       type: 'leaf',
       properties: ['box'],
       data: 'This is leaf node 2',
     },
-{
-      childern: [],
-      type: 'leaf',
-      properties: ['box'],
-      data: 'This is leaf node 2',
-    },
-
-{
-      childern: [],
-      type: 'leaf',
-      properties: ['box'],
-      data: 'This is leaf node 2',
-    },
-
-{
-      childern: [],
-      type: 'leaf',
-      properties: ['box'],
-      data: 'This is leaf node 2',
-    },
-
-{
-      childern: [],
-      type: 'leaf',
-      properties: ['box'],
-      data: 'This is leaf node 2',
-    },
-
-{
-      childern: [],
+    {
+      children: [],
       type: 'leaf',
       properties: ['box'],
       data: 'This is leaf node 2',
     },
 
     {
-      childern: [],
+      children: [],
+      type: 'leaf',
+      properties: ['box'],
+      data: 'This is leaf node 2',
+    },
+
+    {
+      children: [],
+      type: 'leaf',
+      properties: ['box'],
+      data: 'This is leaf node 2',
+    },
+
+    {
+      children: [],
+      type: 'leaf',
+      properties: ['box'],
+      data: 'This is leaf node 2',
+    },
+
+    {
+      children: [],
+      type: 'leaf',
+      properties: ['box'],
+      data: 'This is leaf node 2',
+    },
+
+    {
+      children: [],
       type: 'leaf',
       properties: [],
       data: 'This is leaf node 3',
     },
     {
-      childern: [
+      children: [
         {
-          childern: [],
+          children: [],
           type: 'leaf',
           properties: [],
           data: 'This is leaf node 4.1',
         },
         {
-          childern: [
+          children: [
             {
-              childern: [],
+              children: [],
               type: 'leaf',
               properties: [],
               data: 'This is leaf node 4.2.1',
             },
             {
-              childern: [],
+              children: [],
               type: 'leaf',
               properties: ['box'],
               data: 'This is leaf node 4.2.2',
@@ -85,37 +85,43 @@ export const testJson = {
           data: 'This is leaf node 4.2',
         },
         {
-          childern: [],
+          children: [],
           type: 'leaf',
           properties: [],
           data: 'This is leaf node 4.3',
         },
         {
-          childern: [],
+          children: [],
           type: 'leaf',
           properties: [],
           data: 'This is leaf node 4.4',
         },
         {
-          childern: [],
+          children: [],
           type: 'leaf',
           properties: ['hover-effect'],
           data: 'This is leaf node 4.5',
         },
         {
-          childern: [],
+          children: [],
           type: 'leaf',
           properties: [],
           data: 'This is leaf node 4.6',
         },
         {
-          childern: [],
+          children: [],
           type: 'leaf',
           properties: [],
           data: 'This is leaf node 4.7',
         },
       ],
       type: 'columns',
+      properties: [],
+    },
+    
+    {
+      type: '',
+      children: [],
       properties: [],
     },
   ],

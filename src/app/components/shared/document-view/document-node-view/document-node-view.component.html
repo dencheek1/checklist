@@ -6,12 +6,15 @@
       <app-document-table-view [node] = "node"/>
     }
     @default {
-      @if(node.childern.length > 0){
-        @for (child of node.childern; track $index) {
+      @if(node.children.length > 0){
+        @for (child of node.children; track $index) {
           <app-document-node-view [node]="child"/>
         }
       }
+      @else {
+        <div class="box"></div>
+      }
     }
   }
-  <div [class]="['remove--button', removeVisibilityLevel]" >remove</div>
+  @if(node.children.length == 0){<div class="remove--button" [style.opacity]="removeOpacity" (click)="removeNode(node)">rm</div>}
 </div>

@@ -1,3 +1,6 @@
+@use '../../styles/document-properties';
+
+
 .columns{
     display:grid;
     grid-template-columns: 1fr 1fr;
@@ -5,4 +8,9 @@
     // & > *:nth-child(odd){
     //     border-right: 3px solid #eee;
     // }
+}
+
+
+.box{
+    background-color:pink;
 }

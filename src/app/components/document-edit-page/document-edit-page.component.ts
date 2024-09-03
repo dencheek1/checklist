@@ -22,8 +22,8 @@ export class DocumentEditPageComponent {
   document = testJson as DocumentNode;
 
   addNode(){
-    this.document.childern.push({
-          childern: [],
+    this.document.children.push({
+          children: [],
           type: 'leaf',
           properties: [],
           data: 'Added new leaf node',
