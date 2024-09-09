@@ -8,7 +8,7 @@ import { DocumentNodeViewComponent } from "../document-node-view/document-node-v
   imports: [forwardRef(() => DocumentNodeViewComponent)],
   templateUrl: './document-table-view.component.html',
   styleUrl: './document-table-view.component.scss',
-  changeDetection:ChangeDetectionStrategy.OnPush
+  // changeDetection:ChangeDetectionStrategy.OnPush
 
 })
 export class DocumentTableViewComponent implements OnInit {

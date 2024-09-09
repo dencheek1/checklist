@@ -23,7 +23,7 @@ import { toObservable } from '@angular/core/rxjs-interop'
   imports: [DocumentViewComponent, DocumentTableViewComponent, NgClass],
   templateUrl: './document-node-view.component.html',
   styleUrl: './document-node-view.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DocumentNodeViewComponent implements OnInit, OnChanges {
   private prs = inject(PreviewService);

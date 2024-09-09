@@ -17,7 +17,7 @@ import { PreviewService } from '../../../service/preview/preview.service';
   imports: [forwardRef(() => DocumentNodeViewComponent)],
   templateUrl: './document-view.component.html',
   styleUrl: './document-view.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DocumentViewComponent implements OnInit {
   constructor() {
