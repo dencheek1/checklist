@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, OnInit } from '@angular/core';
 import { DocumentNode } from '../../../../core/document-node';
 import { DocumentNodeViewComponent } from "../document-node-view/document-node-view.component";
 
@@ -8,6 +8,7 @@ import { DocumentNodeViewComponent } from "../document-node-view/document-node-v
   imports: [forwardRef(() => DocumentNodeViewComponent)],
   templateUrl: './document-table-view.component.html',
   styleUrl: './document-table-view.component.scss',
+  changeDetection:ChangeDetectionStrategy.OnPush
 
 })
 export class DocumentTableViewComponent implements OnInit {

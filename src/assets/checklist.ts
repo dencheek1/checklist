@@ -2,7 +2,7 @@ import { DocumentNode } from '../app/core/document-node';
 
 export const testJson = {
   type: 'block',
-  properties: ['bold', 'italik'],
+  properties: ['bold', ],
   children: [
     {
       children: [],

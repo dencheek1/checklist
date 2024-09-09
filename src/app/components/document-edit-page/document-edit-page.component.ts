@@ -20,6 +20,14 @@ import { HeaderComponent } from '../shared/header/header.component';
 })
 export class DocumentEditPageComponent {
   document = testJson as DocumentNode;
+  
+  // TODO make this a thing
+  /*   
+   * - [ ] make it a signal (maybe get it from other place)
+   * - [ ] make it possible to select multiple nodes
+   * 
+   */ 
+  selectedNodes = [] as DocumentNode[];
 
   addNode(){
     this.document.children.push({
