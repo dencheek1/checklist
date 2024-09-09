@@ -60,5 +60,12 @@ export class PreviewService {
     }
     return null;
   }
-
+  
+  addDocumentNode(node: DocumentNode){
+    // this.document.update( value => value.children.push(node))
+    let copy = this.document();
+    copy.children.push(node);
+    this.document.set(copy);
+    console.log('added new node')
+  }
 }

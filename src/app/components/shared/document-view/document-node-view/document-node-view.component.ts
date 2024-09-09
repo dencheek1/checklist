@@ -15,6 +15,7 @@ import { DocumentViewComponent } from '../document-view.component';
 import { DocumentTableViewComponent } from '../document-table-view/document-table-view.component';
 import { PreviewService } from '../../../../service/preview/preview.service';
 import { NgClass } from '@angular/common';
+import { toObservable } from '@angular/core/rxjs-interop'
 
 @Component({
   selector: 'app-document-node-view',
@@ -37,9 +38,14 @@ export class DocumentNodeViewComponent implements OnInit, OnChanges {
         .includes(this.node);
       this.cdr.markForCheck();
     });
-    effect(() => {
-      this.preview.document();
-      this.cdr.markForCheck();
+    // effect(() => {
+      // console.log('document changed')
+      // this.preview.document();
+      // this.cdr.markForCheck();
+    // });
+    // observable this.preview.document
+    toObservable(this.preview.document).subscribe(()=>{
+      this.cdr.detectChanges();
     });
   }
 
