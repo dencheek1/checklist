@@ -14,6 +14,10 @@ export class PreviewService {
     this.selected.set([...this.selected(), node]);
   }
 
+  removeSelectedNodes(){
+    this.removeNodes(this.selected());
+  }
+
   removeFromSelected(node: DocumentNode) {
     this.selected.set(this.selected().filter((e) => e != node));
   }
@@ -31,18 +35,36 @@ export class PreviewService {
   }
 
   removeNode(node: DocumentNode) {
+    // let document = this.document();
+    // let parentNode = this.getParent(document, node);
+    // if (parentNode) {
+      // parentNode.children = parentNode.children.filter((n) => n != node);
+      // this.document.set(document);
+    // }
+    // console.log('can\'t find parent for: ')
+    // console.log(node)
+    //MDN d
     let document = this.document();
+    console.log(document);
+    if( this.removeNodeDocument(document, node) ){
+      console.log(document);
+      this.document.set(document);
+    }
+  }
+  
+  private removeNodeDocument(document: DocumentNode, node: DocumentNode): boolean{
     let parentNode = this.getParent(document, node);
     if (parentNode) {
       parentNode.children = parentNode.children.filter((n) => n != node);
-      this.document.set(document);
+     return true; 
     }
-    console.log('can\'t find parent for: ')
-    console.log(node)
+    return false;
   }
 
   removeNodes(nodes: DocumentNode[]){
-     nodes.forEach(this.removeNode);
+     let document = this.document();
+     nodes.forEach( (node) => this.removeNodeDocument(document, node) );
+     this.document.set(document);
   }
 
   getParent(root: DocumentNode, node: DocumentNode): DocumentNode | null {

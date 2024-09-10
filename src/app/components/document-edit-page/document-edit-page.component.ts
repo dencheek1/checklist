@@ -45,4 +45,13 @@ export class DocumentEditPageComponent {
       data: 'Added new leaf node',
     });
   }
+
+  addBox(){
+    this.preview.addDocumentNode({
+      children: [],
+      type: 'leaf',
+      properties: ['box'],
+      data: 'Box leaf node'
+    });
+  }
 }

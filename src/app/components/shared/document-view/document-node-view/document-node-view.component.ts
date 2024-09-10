@@ -15,7 +15,7 @@ import { DocumentViewComponent } from '../document-view.component';
 import { DocumentTableViewComponent } from '../document-table-view/document-table-view.component';
 import { PreviewService } from '../../../../service/preview/preview.service';
 import { NgClass } from '@angular/common';
-import { toObservable } from '@angular/core/rxjs-interop'
+import { toObservable } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-document-node-view',
@@ -33,28 +33,28 @@ export class DocumentNodeViewComponent implements OnInit, OnChanges {
 
   constructor() {
     effect(() => {
+      this.bouldClassObject();
       this.leafClasses['selected'] = this.preview
         .selected()
         .includes(this.node);
       this.cdr.markForCheck();
     });
     // effect(() => {
-      // console.log('document changed')
-      // this.preview.document();
-      // this.cdr.markForCheck();
+    // console.log('document changed')
+    // this.preview.document();
+    // this.cdr.markForCheck();
     // });
     // observable this.preview.document
-    toObservable(this.preview.document).subscribe(()=>{
+    toObservable(this.preview.document).subscribe(() => {
       this.cdr.detectChanges();
     });
   }
-
 
   leafClasses: Record<string, boolean> = {};
   removeOpacity = 0;
   preview = inject(PreviewService);
 
-  //NG methods 
+  //NG methods
   ngOnInit(): void {
     // console.log(this.leafClass);
     this.bouldClassObject();
@@ -62,10 +62,9 @@ export class DocumentNodeViewComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    this.leafClasses['selected'] = this.preview.selected().includes(this.node);
-    console.log(this.leafClasses);
+    // this.leafClasses['selected'] = this.preview.selected().includes(this.node);
+    // console.log(this.leafClasses);
   }
-
 
   // event handlers
   hover(e: Event) {
@@ -92,11 +91,13 @@ export class DocumentNodeViewComponent implements OnInit, OnChanges {
 
   select(event: MouseEvent) {
     event.stopPropagation();
-    let node = this.node
-    if(this.node.children.length > 0){
-      node = this.node.children[-1]
+    let node = this.node;
+    if (this.node.children.length > 0) {
+      node = this.node.children[-1];
     }
-    event.shiftKey ? this.preview.addSelected(node) : this.preview.setSelected([node]);
+    event.shiftKey
+      ? this.preview.addSelected(node)
+      : this.preview.setSelected([node]);
   }
 
   mouseLeave() {
@@ -105,11 +106,14 @@ export class DocumentNodeViewComponent implements OnInit, OnChanges {
 
   removeNode(event: Event, node: DocumentNode) {
     //TODO create some service to remove node from document viewed tree
-    this.preview.removeNode(node);
+    if (this.preview.selected().includes(this.node)) {
+      this.preview.removeSelectedNodes();
+      this.preview.clearSelected();
+    } else {
+      this.preview.removeNode(node);
+    }
     event.stopPropagation();
   }
-
-
 
   //utility methods
   checkClasses() {}

@@ -1,7 +1,7 @@
 <div class="wrapper">
     <app-header />
     <div class="grid">
-        <div class="toolbar"><app-document-edit-toolbar (addNode)="addNode()"/></div>
+        <div class="toolbar"><app-document-edit-toolbar (addNode)="addNode()" (addBox)="addBox()"/></div>
         <div class="preview">
             <!-- <div class="aspect-ratio"> -->
                 <app-document-view [document]="document" />

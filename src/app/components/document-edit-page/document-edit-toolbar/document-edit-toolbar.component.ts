@@ -10,9 +10,14 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class DocumentEditToolbarComponent {
 
   @Output('addNode') addNodeEmitter = new EventEmitter; 
-
+  @Output('addBox') addBoxEmiter = new EventEmitter;
+  
   addNode(){
     this.addNodeEmitter.emit();
+  }
+
+  addBox(){
+    this.addBoxEmiter.emit();
   }
 
 }
