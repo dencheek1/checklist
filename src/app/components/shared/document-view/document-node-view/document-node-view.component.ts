@@ -1,10 +1,7 @@
 import {
-  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  ComponentRef,
   effect,
-  ElementRef,
   inject,
   Input,
   OnChanges,
@@ -26,14 +23,18 @@ import { toObservable } from '@angular/core/rxjs-interop';
   // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DocumentNodeViewComponent implements OnInit, OnChanges {
-  private prs = inject(PreviewService);
   private cdr = inject(ChangeDetectorRef);
 
   @Input() node: DocumentNode = {} as DocumentNode;
 
   constructor() {
+    toObservable(this.preview.document).subscribe(() => {
+        console.log('this is log from observable');
+        this.cdr.markForCheck();
+      }
+    )
     effect(() => {
-      this.bouldClassObject();
+      this.buildClassObject();
       this.leafClasses['selected'] = this.preview
         .selected()
         .includes(this.node);
@@ -46,23 +47,27 @@ export class DocumentNodeViewComponent implements OnInit, OnChanges {
     // });
     // observable this.preview.document
     toObservable(this.preview.document).subscribe(() => {
+      this.buildClassObject();
       this.cdr.detectChanges();
     });
   }
 
-  leafClasses: Record<string, boolean> = {};
+  leafClasses: Record<string, boolean> = {box:false};
   removeOpacity = 0;
   preview = inject(PreviewService);
 
   //NG methods
   ngOnInit(): void {
     // console.log(this.leafClass);
-    this.bouldClassObject();
+    this.buildClassObject();
     this.leafClasses['wrapper'] = true;
+    console.log('init new node');
+    console.log(this.node);
+    console.log(this.leafClasses)
   }
 
   ngOnChanges() {
-    // this.leafClasses['selected'] = this.preview.selected().includes(this.node);
+    this.leafClasses['selected'] = this.preview.selected().includes(this.node);
     // console.log(this.leafClasses);
   }
 
@@ -98,6 +103,7 @@ export class DocumentNodeViewComponent implements OnInit, OnChanges {
     event.shiftKey
       ? this.preview.addSelected(node)
       : this.preview.setSelected([node]);
+      this.cdr.markForCheck();
   }
 
   mouseLeave() {
@@ -119,13 +125,17 @@ export class DocumentNodeViewComponent implements OnInit, OnChanges {
   checkClasses() {}
 
   //this method initialises class variable
-  bouldClassObject() {
-    this.leafClasses = this.node.properties.reduce(
-      (acc: Record<string, boolean>, prop) => {
-        acc[`${prop}`] = true;
-        return acc;
+  buildClassObject() {
+     this.node.properties.forEach(
+      (prop) => {
+      this.leafClasses[prop] = true
       },
       {} as Record<string, boolean>
+
     );
+
+    this.leafClasses['wrapper'] = true;
+    console.log(this.leafClasses)
+    console.log(this.node.data)
   }
 }

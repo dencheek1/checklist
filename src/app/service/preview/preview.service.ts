@@ -45,9 +45,9 @@ export class PreviewService {
     // console.log(node)
     //MDN d
     let document = this.document();
-    console.log(document);
+    // console.log(document);
     if( this.removeNodeDocument(document, node) ){
-      console.log(document);
+      // console.log(document);
       this.document.set(document);
     }
   }
@@ -71,7 +71,7 @@ export class PreviewService {
     if (root.children.includes(node)) {
       return root;
     } else if (root.children.length > 0) {
-      console.log(root.children)
+      // console.log(root.children)
       return root.children.reduce(
         (acc: DocumentNode| null, child) => 
           {
@@ -85,9 +85,9 @@ export class PreviewService {
   
   addDocumentNode(node: DocumentNode){
     // this.document.update( value => value.children.push(node))
-    let copy = this.document();
+    let copy = structuredClone(this.document());
     copy.children.push(node);
     this.document.set(copy);
-    console.log('added new node')
+    // console.log('added new node')
   }
 }

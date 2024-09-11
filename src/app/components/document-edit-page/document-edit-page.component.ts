@@ -18,7 +18,7 @@ import { PreviewService } from '../../service/preview/preview.service';
   ],
   templateUrl: './document-edit-page.component.html',
   styleUrl: './document-edit-page.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DocumentEditPageComponent {
   document = testJson as DocumentNode;

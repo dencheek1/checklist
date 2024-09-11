@@ -11,6 +11,7 @@ import {
 import { DocumentNode } from '../../../core/document-node';
 import { DocumentNodeViewComponent } from './document-node-view/document-node-view.component';
 import { PreviewService } from '../../../service/preview/preview.service';
+import { toObservable } from '@angular/core/rxjs-interop';
 @Component({
   selector: 'app-document-view',
   standalone: true,
@@ -20,19 +21,26 @@ import { PreviewService } from '../../../service/preview/preview.service';
   // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DocumentViewComponent implements OnInit {
-  constructor() {
-    effect(() => {
-      this.preview.document();
-      this.cdr.markForCheck();
-    });
+  constructor(protected cdr: ChangeDetectorRef, protected preview: PreviewService) {
+    // effect(() => {
+      // this.preview.document();
+      // this.cdr.markForCheck();
+    // });
+
+    toObservable(preview.document).subscribe(
+      () => {
+        cdr.markForCheck()
+        console.log(preview.document())
+      });
   }
 
-  cdr = inject(ChangeDetectorRef);
-  preview = inject(PreviewService);
+  // cdr = inject(ChangeDetectorRef);
+  // preview = inject(PreviewService);
 
   @Input() document!: DocumentNode;
   ngOnInit(): void {
-    this.preview.setDocument(this.document);
+    this.preview.setDocument(structuredClone(this.document));
+
   }
 
   deleteSelected() {
