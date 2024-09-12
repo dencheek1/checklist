@@ -1,8 +1,8 @@
 import { DocumentNode } from '../app/core/document-node';
 
-export const testJson = {
+export const testJson: DocumentNode = {
   type: 'block',
-  properties: ['bold' ],
+  properties: {bold: true},
   children: [
     // {
       // children: [],

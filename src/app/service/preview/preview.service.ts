@@ -11,6 +11,8 @@ export class PreviewService {
   readonly selected = signal<DocumentNode[]>([]);
 
   addSelected(node: DocumentNode) {
+    console.log(this.selected())
+    console.log([...this.selected(), node])
     this.selected.set([...this.selected(), node]);
   }
 

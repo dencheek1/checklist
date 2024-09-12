@@ -41,7 +41,7 @@ export class DocumentEditPageComponent {
     this.preview.addDocumentNode({
       children: [],
       type: 'leaf',
-      properties: [],
+      properties: {},
       data: 'Added new leaf node',
     });
   }
@@ -50,7 +50,7 @@ export class DocumentEditPageComponent {
     this.preview.addDocumentNode({
       children: [],
       type: 'leaf',
-      properties: ['box'],
+      properties: {box: true},
       data: 'Box leaf node'
     });
   }

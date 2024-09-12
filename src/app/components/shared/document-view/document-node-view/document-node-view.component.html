@@ -1,20 +1,22 @@
-<div [ngClass]="leafClasses" (mousemove)="hover($event)" (mouseleave)="mouseLeave()" (click)="select($event)">
-  @switch(node.type){
-    @case ('leaf') {
-      {{node.data}}}
-    @case ('columns'){
-      <app-document-table-view [node] = "node"/>
-    }
-    @default {
-      @if(node.children.length > 0){
-        @for (child of node.children; track $index) {
-          <app-document-node-view [node]="child"/>
+<div class="wrapper">
+  <div [ngClass]="leafClasses" (mousemove)="hover($event)" (mouseleave)="mouseLeave()" (click)="select($event)">
+    @switch(node.type){
+      @case ('leaf') {
+        {{node.data}}}
+      @case ('columns'){
+        <app-document-table-view [node] = "node"/>
+      }
+      @default {
+        @if(node.children.length > 0){
+          @for (child of node.children; track $index) {
+            <app-document-node-view [node]="child"/>
+          }
+        }
+        @else {
+          <div class="box"></div>
         }
       }
-      @else {
-        <div class="box"></div>
-      }
     }
-  }
-  @if(node.children.length == 0){<div class="remove--button" [style.opacity]="removeOpacity" (click)="removeNode($event, node)">rm</div>}
+    @if(node.children.length == 0){<div class="remove--button" [style.opacity]="removeOpacity" (click)="removeNode($event, node)">rm</div>}
+  </div>
 </div>

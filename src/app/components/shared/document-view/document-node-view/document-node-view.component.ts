@@ -29,15 +29,14 @@ export class DocumentNodeViewComponent implements OnInit, OnChanges {
 
   constructor() {
     toObservable(this.preview.document).subscribe(() => {
-        console.log('this is log from observable');
         this.cdr.markForCheck();
       }
     )
     effect(() => {
       this.buildClassObject();
-      this.leafClasses['selected'] = this.preview
-        .selected()
-        .includes(this.node);
+      this.leafClasses['selected'] = this.preview.selected().includes(this.node);
+        console.log(this.preview.selected())
+        this.leafClasses = {...this.leafClasses}
       this.cdr.markForCheck();
     });
     // effect(() => {
@@ -52,6 +51,8 @@ export class DocumentNodeViewComponent implements OnInit, OnChanges {
     });
   }
 
+  setCurrentClasses(){}
+
   leafClasses: Record<string, boolean> = {box:false};
   removeOpacity = 0;
   preview = inject(PreviewService);
@@ -61,13 +62,10 @@ export class DocumentNodeViewComponent implements OnInit, OnChanges {
     // console.log(this.leafClass);
     this.buildClassObject();
     this.leafClasses['wrapper'] = true;
-    console.log('init new node');
-    console.log(this.node);
-    console.log(this.leafClasses)
   }
 
   ngOnChanges() {
-    this.leafClasses['selected'] = this.preview.selected().includes(this.node);
+    // this.leafClasses['selected'] = this.preview.selected().includes(this.node);
     // console.log(this.leafClasses);
   }
 
@@ -103,6 +101,7 @@ export class DocumentNodeViewComponent implements OnInit, OnChanges {
     event.shiftKey
       ? this.preview.addSelected(node)
       : this.preview.setSelected([node]);
+      console.log(event.shiftKey)
       this.cdr.markForCheck();
   }
 
@@ -126,16 +125,15 @@ export class DocumentNodeViewComponent implements OnInit, OnChanges {
 
   //this method initialises class variable
   buildClassObject() {
-     this.node.properties.forEach(
-      (prop) => {
-      this.leafClasses[prop] = true
-      },
-      {} as Record<string, boolean>
+    //TODO do something with common properties. make an enum for this stuf. 
+     this.leafClasses = structuredClone(this.node.properties) as Record<string, boolean>;
+    //  this.leafClasses = this.node.properties.reduce(
+    //   (acc: Record<string, boolean>,prop) => {
+    //   acc[prop] = true
+    //   return acc;
+    //   },
+    //   {} as Record<string, boolean>
 
-    );
-
-    this.leafClasses['wrapper'] = true;
-    console.log(this.leafClasses)
-    console.log(this.node.data)
+    // );
   }
 }

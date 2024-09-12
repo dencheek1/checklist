@@ -30,7 +30,6 @@ export class DocumentViewComponent implements OnInit {
     toObservable(preview.document).subscribe(
       () => {
         cdr.markForCheck()
-        console.log(preview.document())
       });
   }
 
@@ -46,6 +45,5 @@ export class DocumentViewComponent implements OnInit {
   deleteSelected() {
     this.preview.removeNodes(this.preview.selected());
     this.preview.clearSelected();
-    console.log('delete event');
   }
 }
