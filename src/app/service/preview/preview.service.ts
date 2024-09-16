@@ -18,6 +18,7 @@ export class PreviewService {
 
   removeSelectedNodes(){
     this.removeNodes(this.selected());
+    this.clearSelected();
   }
 
   removeFromSelected(node: DocumentNode) {
