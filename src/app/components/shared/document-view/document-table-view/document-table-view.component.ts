@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, forwardRef, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, inject, Input, OnInit } from '@angular/core';
 import { DocumentNode } from '../../../../core/document-node';
 import { DocumentNodeViewComponent } from "../document-node-view/document-node-view.component";
+import { PreviewService } from '../../../../service/preview/preview.service';
 
 @Component({
   selector: 'app-document-table-view',
@@ -14,6 +15,8 @@ import { DocumentNodeViewComponent } from "../document-node-view/document-node-v
 export class DocumentTableViewComponent implements OnInit {
 
   @Input() node!: DocumentNode;
+
+  protected preview = inject(PreviewService);
 
   ngOnInit(): void {
     console.log("children array length: " + this.node.children.length)

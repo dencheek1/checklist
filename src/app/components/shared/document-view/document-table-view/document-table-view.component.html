@@ -1,10 +1,7 @@
-<div class="columns">
+<div class="columns" [class.empty] = 'node.children.length <= 0' [class.selected] = 'preview.selected().includes(node)'>
     @if(node.children.length > 0){
         @for (child of node.children; track $index) {
             <app-document-node-view [node]="child"/>
         }
-    }
-    @else {
-        <!-- <div class="box"></div> -->
     }
 </div>

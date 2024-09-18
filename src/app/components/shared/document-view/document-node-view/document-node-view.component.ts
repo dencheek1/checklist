@@ -84,6 +84,7 @@ export class DocumentNodeViewComponent implements OnInit, OnChanges {
   }
 
   select(event: MouseEvent) {
+    console.log('select event')
     event.stopPropagation();
     let node =
       this.node().children.length > 0
@@ -102,10 +103,12 @@ export class DocumentNodeViewComponent implements OnInit, OnChanges {
 
   removeNode(event: Event, node: DocumentNode) {
     //TODO create some service to remove node from document viewed tree
-    this.preview.selected().includes(this.node())
+    event.stopPropagation();
+
+    console.log(this.preview.selected());
+    (this.preview.selected().includes(this.node()))
       ? this.preview.removeSelectedNodes()
       : this.preview.removeNode(this.node());
-    event.stopPropagation();
   }
 
   //utility methods

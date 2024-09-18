@@ -54,4 +54,12 @@ export class DocumentEditPageComponent {
       data: 'Box leaf node'
     });
   }
+
+  addColumns(){
+    this.preview.addAfterSelected({
+      children: [],
+      type: 'columns',
+      properties: {},
+    })
+  }
 }

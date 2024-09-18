@@ -17,6 +17,6 @@
         }
       }
     }
-    @if(node().children.length == 0){<div class="remove--button" [style.opacity]="removeOpacity()" (click)="removeNode($event, node())">rm</div>}
+    @if(node().children.length == 0){<div class="remove--button" [style.opacity]="removeOpacity()" (mouseup)="removeNode($event, node())">rm</div>}
   </div>
 </div>

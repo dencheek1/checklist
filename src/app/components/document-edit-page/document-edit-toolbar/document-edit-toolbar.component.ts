@@ -11,6 +11,7 @@ export class DocumentEditToolbarComponent {
 
   @Output('addNode') addNodeEmitter = new EventEmitter; 
   @Output('addBox') addBoxEmiter = new EventEmitter;
+  @Output('addColumns') addColumnsEmitter = new EventEmitter;
   
   addNode(){
     this.addNodeEmitter.emit();
@@ -20,4 +21,7 @@ export class DocumentEditToolbarComponent {
     this.addBoxEmiter.emit();
   }
 
+  addColumns(){
+    this.addColumnsEmitter.emit();
+  }
 }
