@@ -6,6 +6,9 @@
       @case ('columns'){
         <app-document-table-view [node] = "node()"/>
       }
+      @case ('checkbox'){
+        <app-document-checkbox-view [node] = "node()"/>
+      }
       @default {
         @if(node().children.length > 0){
           @for (child of node().children; track $index) {
@@ -17,6 +20,6 @@
         }
       }
     }
-    @if(node().children.length == 0){<div class="remove--button" [style.opacity]="removeOpacity()" (mouseup)="removeNode($event, node())">rm</div>}
+    @if(node().children.length == 0 || leafClasses()['selected']){<div class="remove--button" [style.opacity]="removeOpacity()" (mouseup)="removeNode($event, node())">rm</div>}
   </div>
 </div>

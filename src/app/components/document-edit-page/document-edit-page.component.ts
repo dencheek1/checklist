@@ -32,34 +32,71 @@ export class DocumentEditPageComponent {
   selectedNodes = [] as DocumentNode[];
 
   addNode() {
-    // this.document.children.push({
-    // children: [],
-    // type: 'leaf',
-    // properties: [],
-    // data: 'Added new leaf node',
-    // })
-    this.preview.addDocumentNode({
+    let node = {
       children: [],
       type: 'leaf',
       properties: {},
       data: 'Added new leaf node',
-    });
+    };
+    this.selectMethod().call(this, node);
   }
 
   addBox(){
-    this.preview.addDocumentNode({
+    let node = {
       children: [],
       type: 'leaf',
       properties: {box: true},
       data: 'Box leaf node'
-    });
+    };
+
+    this.selectMethod().call(this, node);
   }
 
   addColumns(){
-    this.preview.addAfterSelected({
+    let node = {
       children: [],
       type: 'columns',
       properties: {},
-    })
+    };
+
+    this.selectMethod().call(this, node);
+  }
+
+  addCheckbox(){
+    let node = {
+      children: [],
+      type: 'checkbox',
+      properties: {},
+      data: 'Checkbox',
+    };
+
+    this.selectMethod().call(this, node);
+  }
+
+  selectMethod(): (node: DocumentNode) => void {
+    let selected = this.preview.selected();
+    if(selected.length == 1){
+      if(selected[0].type == 'leaf' || selected[0].type == 'checkbox'){
+console.log( 'addAfterSelected' );
+return this.addAfterSelected;
+      } 
+      else return this.addToSelected;
+    }
+    return this.addNodeToDocument;
+  }
+
+  addNodeToDocument( node: DocumentNode ){
+    this.preview.addDocumentNode(node);
+    this.preview.clearSelected();
+  }
+
+  addToSelected( node: DocumentNode ){
+    this.preview.addToSelected(node)
+    this.preview.clearSelected();
+  }
+
+  addAfterSelected( node: DocumentNode ){
+    this.preview.addAfterSelected(node)
+    this.preview.clearSelected();
   }
 }

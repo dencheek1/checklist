@@ -38,9 +38,7 @@ export class PreviewService {
 
   removeNode(node: DocumentNode) {
     let document = this.document();
-    // console.log(document);
     if (this.removeNodeDocument(document, node)) {
-      // console.log(document);
       this.document.set(document);
     }
   }
@@ -58,7 +56,6 @@ export class PreviewService {
   }
 
   removeNodes(nodes: DocumentNode[]) {
-    console.log(nodes);
     let document = this.document();
     nodes.forEach((node) => this.removeNodeDocument(document, node));
     this.document.set(document);
@@ -68,9 +65,9 @@ export class PreviewService {
     if (root.children.includes(node)) {
       return root;
     } else if (root.children.length > 0) {
-      // console.log(root.children)
       return root.children.reduce((acc: DocumentNode | null, child) => {
         acc = acc ? acc : this.getParent(child, node);
+
         return acc;
       }, null);
     }
@@ -78,11 +75,9 @@ export class PreviewService {
   }
 
   addDocumentNode(node: DocumentNode) {
-    // this.document.update( value => value.children.push(node))
     let copy = structuredClone(this.document());
     copy.children.push(node);
     this.document.set(copy);
-    // console.log('added new node')
   }
 
   addAfterSelected(node: DocumentNode) {
@@ -90,7 +85,7 @@ export class PreviewService {
 
     let document = this.document();
     let selected = this.selected()[0];
-    if (selected.type == 'leaf') {
+    if (selected) {
       let parent = this.getParent(document, selected);
 
       if (parent) {
@@ -102,8 +97,17 @@ export class PreviewService {
         ];
       }
     }
-    else{
-      selected.children.push(node);
+
+    this.document.set(structuredClone(document));
+  }
+
+  addToSelected(node: DocumentNode) {
+    if (this.selected().length == 0) return;
+
+    let document = this.document();
+    let selected = this.selected()[0];
+    if (selected.type != 'leaf') {
+      selected.children.push( structuredClone( node ) );      
     }
 
     this.document.set(structuredClone(document));

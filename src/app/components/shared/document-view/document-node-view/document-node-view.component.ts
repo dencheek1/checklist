@@ -16,11 +16,12 @@ import { DocumentTableViewComponent } from '../document-table-view/document-tabl
 import { PreviewService } from '../../../../service/preview/preview.service';
 import { CommonModule, NgClass } from '@angular/common';
 import { toObservable } from '@angular/core/rxjs-interop';
+import { DocumentCheckboxViewComponent } from '../document-checkbox-view/document-checkbox-view.component';
 
 @Component({
   selector: 'app-document-node-view',
   standalone: true,
-  imports: [DocumentViewComponent, DocumentTableViewComponent, CommonModule],
+  imports: [DocumentViewComponent, DocumentTableViewComponent, CommonModule, DocumentCheckboxViewComponent],
   templateUrl: './document-node-view.component.html',
   styleUrl: './document-node-view.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -84,12 +85,11 @@ export class DocumentNodeViewComponent implements OnInit, OnChanges {
   }
 
   select(event: MouseEvent) {
-    console.log('select event')
     event.stopPropagation();
-    let node =
-      this.node().children.length > 0
-        ? this.node().children[this.node().children.length - 1]
-        : this.node();
+    let node = this.node();
+      // this.node().children.length > 0
+      //   ? this.node().children[this.node().children.length - 1]
+      //   : this.node();
 
     event.shiftKey
       ? this.preview.addSelected(node)
@@ -105,7 +105,6 @@ export class DocumentNodeViewComponent implements OnInit, OnChanges {
     //TODO create some service to remove node from document viewed tree
     event.stopPropagation();
 
-    console.log(this.preview.selected());
     (this.preview.selected().includes(this.node()))
       ? this.preview.removeSelectedNodes()
       : this.preview.removeNode(this.node());
