@@ -1,0 +1,24 @@
+.checkbox {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+}
+
+  .checkbox {
+    .input {
+      display: none;
+      background-color: #fff0;
+      position: relative;
+    }
+
+    .checkbox__button {
+      justify-self: center;
+      background-color: red;
+      height: 1.5em;
+      width: 1.5em;
+    }
+
+    input:checked + &__button {
+      background-color: black;
+    }
+  }
+
