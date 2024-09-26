@@ -3,22 +3,61 @@
   grid-template-columns: 40px 1fr;
 }
 
-  .checkbox {
-    .input {
-      display: none;
-      background-color: #fff0;
-      position: relative;
+.checkbox {
+  .input {
+    display: none;
+    background-color: #fff0;
+    position: relative;
+  }
+
+  .checkbox__button {
+    position: relative;
+    // display:flex;
+    justify-self: center;
+    // align-items: center;
+    // justify-content:center;
+    // background-color: red;
+    height: 20px;
+    width: 20px;
+
+    &::before,
+    &::after {
+      position: absolute;
+      display: block;
+      content: "";
+      width: calc( 20px - 5px );
+      height: calc( 20px - 5px );
     }
 
-    .checkbox__button {
-      justify-self: center;
-      background-color: red;
-      height: 1.5em;
-      width: 1.5em;
+    &::before {
+      border-top: 2px solid white;
+      border-right: 2px solid white;
+      right: 0;
+      top: 0;
     }
-
-    input:checked + &__button {
-      background-color: black;
+    &::after {
+      border-bottom: 0.2em solid white;
+      border-left: 0.2em solid white;
+      left: 0;
+      bottom: 0;
     }
   }
 
+  &__button__icon {
+    width: 10px;
+    height: 10px;
+    // background-color: black;
+    transition: 70ms ease-in-out ;
+    box-shadow: 0 0 0 #fff0;
+    position:relative;
+    left: 5px;
+    top: 5px;
+  }
+
+  input:checked + &__button {
+    .checkbox__button__icon {
+      background-color: white;
+      box-shadow: -3px 3px 0px rgb(156, 43, 201);
+    }
+  }
+}

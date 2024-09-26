@@ -4,24 +4,30 @@ export const testJson: DocumentNode = {
   type: 'block',
   properties: {bold: true},
   children: [
-    // {
-      // children: [],
-      // type: 'leaf',
-      // properties: ['box'],
-      // data: 'This is leaf node 2',
-    // },
-    // {
-      // children: [],
-      // type: 'leaf',
-      // properties: ['box'],
-      // data: 'This is leaf node 2',
-    // },
-    // {
-      // children: [],
-      // type: 'leaf',
-      // properties: ['box'],
-      // data: 'This is leaf node 2',
-    // },
+    {
+      children: [],
+      type: 'leaf',
+      properties: {'box': true},
+      data: 'This is leaf node 2',
+    },
+    {
+      children: [],
+      type: 'leaf',
+      properties: {},
+      data: 'This is leaf node 2',
+    },
+    {
+      children: [],
+      type: 'leaf',
+      properties:{}, 
+      data: 'This is leaf node 2',
+    },
+    {
+      children: [],
+      type: 'checkbox',
+      properties: {},
+      data: 'Checkbox',
+    },
 // 
     // {
       // children: [],

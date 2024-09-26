@@ -1,5 +1,7 @@
 <div class="checkbox" >
-    <input class="input" type="checkbox" name="checkbox" id="checkbox">
-    <label for="checkbox" class="checkbox__button"></label>
+    <input class="input" type="checkbox" name="checkbox" [id]="inputId">
+    <label (mouseup)="mouseup($event)" [for]="inputId" class="checkbox__button" >
+        <div class="checkbox__button__icon"></div>
+    </label>
     <div class="text">{{node().data}}</div>
 </div>

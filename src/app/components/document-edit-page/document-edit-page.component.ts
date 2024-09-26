@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, forwardRef, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  inject,
+} from '@angular/core';
 import { DocumentEditToolbarComponent } from './document-edit-toolbar/document-edit-toolbar.component';
 import { DocumentEditPropertyWindowComponent } from './document-edit-property-window/document-edit-property-window.component';
 import { DocumentViewComponent } from '../shared/document-view/document-view.component';
@@ -41,18 +46,18 @@ export class DocumentEditPageComponent {
     this.selectMethod().call(this, node);
   }
 
-  addBox(){
+  addBox() {
     let node = {
       children: [],
       type: 'leaf',
-      properties: {box: true},
-      data: 'Box leaf node'
+      properties: { box: true },
+      data: 'Box leaf node',
     };
 
     this.selectMethod().call(this, node);
   }
 
-  addColumns(){
+  addColumns() {
     let node = {
       children: [],
       type: 'columns',
@@ -62,7 +67,7 @@ export class DocumentEditPageComponent {
     this.selectMethod().call(this, node);
   }
 
-  addCheckbox(){
+  addCheckbox() {
     let node = {
       children: [],
       type: 'checkbox',
@@ -75,28 +80,26 @@ export class DocumentEditPageComponent {
 
   selectMethod(): (node: DocumentNode) => void {
     let selected = this.preview.selected();
-    if(selected.length == 1){
-      if(selected[0].type == 'leaf' || selected[0].type == 'checkbox'){
-console.log( 'addAfterSelected' );
-return this.addAfterSelected;
-      } 
-      else return this.addToSelected;
+    if (selected.length == 1) {
+      if (selected[0].type == 'leaf' || selected[0].type == 'checkbox') {
+        return this.addAfterSelected;
+      } else return this.addToSelected;
     }
     return this.addNodeToDocument;
   }
 
-  addNodeToDocument( node: DocumentNode ){
+  addNodeToDocument(node: DocumentNode) {
     this.preview.addDocumentNode(node);
     this.preview.clearSelected();
   }
 
-  addToSelected( node: DocumentNode ){
-    this.preview.addToSelected(node)
+  addToSelected(node: DocumentNode) {
+    this.preview.addToSelected(node);
     this.preview.clearSelected();
   }
 
-  addAfterSelected( node: DocumentNode ){
-    this.preview.addAfterSelected(node)
+  addAfterSelected(node: DocumentNode) {
+    this.preview.addAfterSelected(node);
     this.preview.clearSelected();
   }
 }

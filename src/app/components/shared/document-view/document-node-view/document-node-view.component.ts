@@ -21,7 +21,12 @@ import { DocumentCheckboxViewComponent } from '../document-checkbox-view/documen
 @Component({
   selector: 'app-document-node-view',
   standalone: true,
-  imports: [DocumentViewComponent, DocumentTableViewComponent, CommonModule, DocumentCheckboxViewComponent],
+  imports: [
+    DocumentViewComponent,
+    DocumentTableViewComponent,
+    CommonModule,
+    DocumentCheckboxViewComponent,
+  ],
   templateUrl: './document-node-view.component.html',
   styleUrl: './document-node-view.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -81,19 +86,20 @@ export class DocumentNodeViewComponent implements OnInit, OnChanges {
         ? 1
         : ratio * 1.5 - 0.125
     );
-
   }
 
   select(event: MouseEvent) {
     event.stopPropagation();
     let node = this.node();
-      // this.node().children.length > 0
-      //   ? this.node().children[this.node().children.length - 1]
-      //   : this.node();
+    // this.node().children.length > 0
+    //   ? this.node().children[this.node().children.length - 1]
+    //   : this.node();
 
-    event.shiftKey
-      ? this.preview.addSelected(node)
-      : this.preview.setSelected([node]);
+    this.preview.selected().includes(this.node())
+      ? this.preview.clearSelected()
+      : event.shiftKey
+        ? this.preview.addSelected(node)
+        : this.preview.setSelected([node]);
     this.cdr.markForCheck();
   }
 
@@ -105,7 +111,7 @@ export class DocumentNodeViewComponent implements OnInit, OnChanges {
     //TODO create some service to remove node from document viewed tree
     event.stopPropagation();
 
-    (this.preview.selected().includes(this.node()))
+    this.preview.selected().includes(this.node())
       ? this.preview.removeSelectedNodes()
       : this.preview.removeNode(this.node());
   }
