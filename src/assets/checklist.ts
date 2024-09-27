@@ -1,30 +1,32 @@
 import { DocumentNode } from '../app/core/document-node';
+import { NodeClasses } from '../app/core/node-classes';
+import { NodeType } from '../app/core/node-types';
 
 export const testJson: DocumentNode = {
-  type: 'block',
-  properties: {bold: true},
+  type: NodeType.Block,
+  properties: {},
   children: [
     {
       children: [],
-      type: 'leaf',
-      properties: {'box': true},
+      type: NodeType.Leaf,
+      properties: { box: true},
       data: 'This is leaf node 2',
     },
     {
       children: [],
-      type: 'leaf',
+      type: NodeType.Leaf,
       properties: {},
       data: 'This is leaf node 2',
     },
     {
       children: [],
-      type: 'leaf',
-      properties:{}, 
+      type: NodeType.Leaf,
+      properties: {}, 
       data: 'This is leaf node 2',
     },
     {
       children: [],
-      type: 'checkbox',
+      type: NodeType.Checkbox,
       properties: {},
       data: 'Checkbox',
     },

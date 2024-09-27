@@ -17,6 +17,8 @@ import { PreviewService } from '../../../../service/preview/preview.service';
 import { CommonModule, NgClass } from '@angular/common';
 import { toObservable } from '@angular/core/rxjs-interop';
 import { DocumentCheckboxViewComponent } from '../document-checkbox-view/document-checkbox-view.component';
+import { NodeType } from '../../../../core/node-types';
+import { node_class } from '../../../../core/node-classes';
 
 @Component({
   selector: 'app-document-node-view',
@@ -38,6 +40,8 @@ export class DocumentNodeViewComponent implements OnInit, OnChanges {
   public node = input.required<DocumentNode>({});
   public leafClasses = signal<Record<string, boolean>>({ box: false });
   public removeOpacity = signal<number>(0);
+  public ne = NodeType;
+  
   private preview = inject(PreviewService);
 
   constructor() {

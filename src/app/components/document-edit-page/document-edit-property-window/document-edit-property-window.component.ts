@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { PreviewService } from '../../../service/preview/preview.service';
 import { toObservable } from '@angular/core/rxjs-interop';
 import { Properties } from '../../../core/document-properties';
+import { node_class, NodeClasses } from '../../../core/node-classes';
 
 @Component({
   selector: 'app-document-edit-property-window',
@@ -15,25 +16,18 @@ export class DocumentEditPropertyWindowComponent {
     toObservable(this.preview.selected).subscribe((selected) => {
       let selectedNode = selected[0]
         if (selectedNode) {
-          for (let key in this.properties) {
-            this.properties[key] = selectedNode.properties[key] || false;
+          for (let key in NodeClasses) {
+            // TODO look for better solutions 
+            this.classes[key as keyof node_class] = selectedNode.properties[key as keyof node_class] || false;
           }
         }
-        this.properties = { ...this.properties };
       
     });
   }
 
   protected preview = inject(PreviewService);
-  properties: Properties = {
-    bold: false,
-    box: false,
-    hover: false,
-    italik: false,
-    selected: false,
-  };
+  classes: node_class = {};
 
-  getKeys(): string[]{
-    return Object.keys(this.properties);
-  }
+  // getKeys(): string[]{
+  // }
 }

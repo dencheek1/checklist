@@ -1,10 +1,12 @@
 // Interface for document nodes.
 
 import { Properties } from "./document-properties";
+import { node_class } from "./node-classes";
+import { NodeType } from "./node-types";
 
 export interface DocumentNode {
-    type : string;
+    type : NodeType;
     children : DocumentNode[];
-    properties: Properties; 
+    properties: node_class; 
     data?: string;
 }

@@ -22,10 +22,6 @@ import { toObservable } from '@angular/core/rxjs-interop';
 })
 export class DocumentViewComponent implements OnInit {
   constructor(protected cdr: ChangeDetectorRef, protected preview: PreviewService) {
-    // effect(() => {
-      // this.preview.document();
-      // this.cdr.markForCheck();
-    // });
 
     toObservable(preview.document).subscribe(
       () => {

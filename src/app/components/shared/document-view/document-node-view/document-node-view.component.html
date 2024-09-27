@@ -1,12 +1,12 @@
 <div class="wrapper">
   <div [ngClass]="leafClasses()" (mousemove)="hover($event)" (mouseleave)="mouseLeave()" (mouseup)="select($event)">
     @switch(node().type){
-      @case ('leaf') {
+      @case (ne.Leaf) {
         {{node().data}}}
-      @case ('columns'){
+      @case (ne.Columns){
         <app-document-table-view [node] = "node()"/>
       }
-      @case ('checkbox'){
+      @case (ne.Checkbox){
         <app-document-checkbox-view [node] = "node()"/>
       }
       @default {

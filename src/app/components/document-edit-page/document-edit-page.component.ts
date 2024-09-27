@@ -11,6 +11,7 @@ import { testJson } from '../../../assets/checklist';
 import { DocumentNode } from '../../core/document-node';
 import { HeaderComponent } from '../shared/header/header.component';
 import { PreviewService } from '../../service/preview/preview.service';
+import { NodeType } from '../../core/node-types';
 
 @Component({
   selector: 'app-document-edit-page',
@@ -39,7 +40,7 @@ export class DocumentEditPageComponent {
   addNode() {
     let node = {
       children: [],
-      type: 'leaf',
+      type: NodeType.Leaf,
       properties: {},
       data: 'Added new leaf node',
     };
@@ -47,9 +48,9 @@ export class DocumentEditPageComponent {
   }
 
   addBox() {
-    let node = {
+    let node: DocumentNode = {
       children: [],
-      type: 'leaf',
+      type: NodeType.Leaf,
       properties: { box: true },
       data: 'Box leaf node',
     };
@@ -60,7 +61,7 @@ export class DocumentEditPageComponent {
   addColumns() {
     let node = {
       children: [],
-      type: 'columns',
+      type: NodeType.Columns,
       properties: {},
     };
 
@@ -70,7 +71,7 @@ export class DocumentEditPageComponent {
   addCheckbox() {
     let node = {
       children: [],
-      type: 'checkbox',
+      type: NodeType.Checkbox,
       properties: {},
       data: 'Checkbox',
     };
@@ -81,7 +82,7 @@ export class DocumentEditPageComponent {
   selectMethod(): (node: DocumentNode) => void {
     let selected = this.preview.selected();
     if (selected.length == 1) {
-      if (selected[0].type == 'leaf' || selected[0].type == 'checkbox') {
+      if (selected[0].type ==  NodeType.Leaf|| selected[0].type == NodeType.Checkbox) {
         return this.addAfterSelected;
       } else return this.addToSelected;
     }

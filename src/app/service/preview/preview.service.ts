@@ -1,5 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 import { DocumentNode } from '../../core/document-node';
+import { NodeType } from '../../core/node-types';
 
 @Injectable({
   providedIn: 'root',
@@ -106,7 +107,7 @@ export class PreviewService {
 
     let document = this.document();
     let selected = this.selected()[0];
-    if (selected.type != 'leaf') {
+    if (selected.type != NodeType.Leaf) {
       selected.children.push( structuredClone( node ) );      
     }
 

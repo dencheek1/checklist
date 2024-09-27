@@ -36,28 +36,28 @@
       top: 0;
     }
     &::after {
-      border-bottom: 0.2em solid white;
-      border-left: 0.2em solid white;
+      border-bottom: 2px solid white;
+      border-left: 2px solid white;
       left: 0;
       bottom: 0;
     }
   }
 
   &__button__icon {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     // background-color: black;
     transition: 70ms ease-in-out ;
     box-shadow: 0 0 0 #fff0;
     position:relative;
-    left: 5px;
-    top: 5px;
+    left: 6px;
+    top: 6px;
   }
 
   input:checked + &__button {
     .checkbox__button__icon {
       background-color: white;
-      box-shadow: -3px 3px 0px rgb(156, 43, 201);
+      box-shadow: -4px 4px 0px rgb(156, 43, 201);
     }
   }
 }
