@@ -18,7 +18,8 @@ export class DocumentEditPropertyWindowComponent {
         if (selectedNode) {
           for (let key in NodeClasses) {
             // TODO look for better solutions 
-            this.classes[key as keyof node_class] = selectedNode.properties[key as keyof node_class] || false;
+            console.log(typeof key as keyof node_class)
+            this.classes[ key ] = selectedNode.properties[ key ] || false;
           }
         }
       
@@ -28,6 +29,7 @@ export class DocumentEditPropertyWindowComponent {
   protected preview = inject(PreviewService);
   classes: node_class = {};
 
-  // getKeys(): string[]{
-  // }
+  getKeys(): string[]{
+  return Object.keys(NodeClasses);
+  }
 }
