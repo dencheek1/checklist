@@ -1,11 +1,11 @@
 export enum NodeClasses{
-    BOX = 'box',
-    SMALL = 'small',
-    BIG = 'big',
-    LARGE = 'large',
-    ITALIK = 'italik',
-    BOLD = 'bold',
-    HOVER_EFFECT = 'hover_effect',
+    box = 'box',
+    small = 'small',
+    big = 'big',
+    large = 'large',
+    italik = 'italik',
+    bold = 'bold',
+    hover_effect = 'hover_effect',
 }
 
 export type node_class = {
