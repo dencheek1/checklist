@@ -17,6 +17,10 @@
   outline: unset;
   z-index: 5;
   position:relative;
+
+  width:100%;
+  // text-wrap-mode: wrap;
+  overflow-wrap:break-word;
 }
 
 .remove--button {
@@ -28,6 +32,7 @@
   color: red;
   width: fit-content;
   transition: 0.25s;
+  z-index: 10;
 
   &:hover{
     opacity: 1;

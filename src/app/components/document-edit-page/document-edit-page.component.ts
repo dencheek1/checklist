@@ -91,7 +91,7 @@ export class DocumentEditPageComponent {
 
   addNodeToDocument(node: DocumentNode) {
     this.preview.addDocumentNode(node);
-    this.preview.clearSelected();
+    // this.preview.clearSelected();
   }
 
   addToSelected(node: DocumentNode) {
@@ -101,6 +101,6 @@ export class DocumentEditPageComponent {
 
   addAfterSelected(node: DocumentNode) {
     this.preview.addAfterSelected(node);
-    this.preview.clearSelected();
+    // this.preview.clearSelected();
   }
 }
