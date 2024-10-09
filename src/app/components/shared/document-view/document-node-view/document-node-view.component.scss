@@ -11,37 +11,12 @@
   position:relative;
 }
 
-// .box {
-//   width: 100%;
-// //   height: 32px;
-//   position: relative;
-//   --size: 32px;
-//   align-content: center;
-//   &::before, &::after {
-//     position: absolute;
-//     display: block;
-//     content: "";
-//     width: calc(100% - var(--size)/2);
-//     height: calc(100% - var(--size)/2);
-//   }
-
-//   &::before{
-//     border-top:2px solid white;
-//     border-right:2px solid white;
-//     right: 0;
-//   }
-//   &::after{
-//     border-bottom:2px solid white;
-//     border-left:2px solid white;
-//     left: 0;
-//     bottom:0;
-//   }
-// }
-
 .data {
-  margin: 0.5em;
-  padding: 0 1em;
-  width: 100%;
+  background-color: unset;
+  border: unset;
+  outline: unset;
+  z-index: 5;
+  position:relative;
 }
 
 .remove--button {

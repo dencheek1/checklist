@@ -1,7 +1,7 @@
 export enum NodeType{
-    Columns,
-    Leaf,
-    Checkbox,
-    Table,
-    Block,
+    Columns = 'Columns',
+    Leaf = 'Leaf',
+    Checkbox = 'Checkbox',
+    Table = 'Table',
+    Block = 'Block',
 }

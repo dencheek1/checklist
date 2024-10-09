@@ -9,11 +9,5 @@ export enum NodeClasses{
 }
 
 export type node_class = {
-    [key in keyof NodeClasses as string]?: boolean;
-    // box:boolean;
-    // small:boolean;
-    // big:boolean;
-    // large:boolean;
-    // italik:boolean;
-    // hover_effect:boolean;
+    [key in  NodeClasses as string]?: boolean;
 }

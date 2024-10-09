@@ -1,6 +1,8 @@
 <div class="wrapper"><p>document-edit-property-window works!</p>
     <div>{{preview.selected().at(0)?.type || 'none'}}</div>
     @for(key of getKeys(); track $index){
-        <div class="prop">{{key + ' ' + classes()[key]}}</div>
+        @if(allowedClasses()[key]) {
+            <div class="prop">{{key + ' ' + classes()[key]}}</div>
+        }
     }
 </div>
