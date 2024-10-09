@@ -78,6 +78,7 @@ export class PreviewService {
   addDocumentNode(node: DocumentNode) {
     let copy = structuredClone(this.document());
     copy.children.push(node);
+    this.setSelected([node])
     this.document.set(copy);
   }
 
@@ -86,6 +87,7 @@ export class PreviewService {
 
     let document = this.document();
     let selected = this.selected()[0];
+    let nodeCopy = structuredClone(node);
     if (selected) {
       let parent = this.getParent(document, selected);
 
@@ -93,13 +95,14 @@ export class PreviewService {
         let index = parent.children.indexOf(selected);
         parent.children = [
           ...parent.children.slice(0, index + 1),
-          node,
+          nodeCopy,
           ...parent.children.slice(index + 1),
         ];
       }
     }
 
-    this.document.set(structuredClone(document));
+    this.document.set(document);
+    this.setSelected([nodeCopy]);
   }
 
   addToSelected(node: DocumentNode) {
