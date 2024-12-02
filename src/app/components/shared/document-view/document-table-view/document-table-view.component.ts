@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, forwardRef, inject, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, HostListener, inject, Input, OnInit } from '@angular/core';
 import { DocumentNode } from '../../../../core/document-node';
 import { DocumentNodeViewComponent } from "../document-node-view/document-node-view.component";
 import { PreviewService } from '../../../../service/preview/preview.service';
@@ -14,6 +14,11 @@ import { PreviewService } from '../../../../service/preview/preview.service';
 })
 export class DocumentTableViewComponent implements OnInit {
 
+  @HostListener('keydown', ['$event'])
+  editMode(event: KeyboardEvent){
+    // if(event.)this.preview.toggleEditMode();
+    console.log(event);
+  }
   @Input() node!: DocumentNode;
 
   protected preview = inject(PreviewService);

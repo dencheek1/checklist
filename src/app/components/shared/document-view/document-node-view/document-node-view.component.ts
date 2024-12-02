@@ -82,6 +82,7 @@ export class DocumentNodeViewComponent implements OnInit, OnChanges {
     let ratio = (mousePositionX - boundingRect.x) / boundingRect.width;
 
     // TODO make opacity dependent on distance from
+    // ? Don't look nice with current placeholder, would it be better with normal icon?
     this.removeOpacity.set(
       ratio < 0.25
         ? 0.25
@@ -112,7 +113,6 @@ export class DocumentNodeViewComponent implements OnInit, OnChanges {
   }
 
   removeNode(event: Event, node: DocumentNode) {
-    //TODO create some service to remove node from document viewed tree
     event.stopPropagation();
 
     this.preview.selected().includes(this.node())
@@ -120,16 +120,28 @@ export class DocumentNodeViewComponent implements OnInit, OnChanges {
       : this.preview.removeNode(this.node());
   }
 
-  //utility methods
+  // utility methods
   checkClasses() {}
 
-  //this method initialises class variable
+  // this method initialises class variable
   buildClassObject() {
     //TODO do something with common properties. make an enum for this stuf.
+    // * completed  
     let classes = structuredClone(this.node().properties) as Record<
       string,
       boolean
     >;
     this.leafClasses.set(classes);
+  }
+
+
+  // TODO make sain div selection and focus
+  mufleEvent(e: MouseEvent){
+    if(!e.ctrlKey)e.stopPropagation();
+    else (e.target as HTMLElement).focus();
+  }
+
+  selectEvent(){
+    console.log('editable selected');
   }
 }

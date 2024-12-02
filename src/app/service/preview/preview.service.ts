@@ -10,6 +10,11 @@ export class PreviewService {
 
   readonly document = signal<DocumentNode>({} as DocumentNode);
   readonly selected = signal<DocumentNode[]>([]);
+  readonly editMode = signal<Boolean>(false);
+
+  toggleEditMode(){
+    this.editMode.set(!this.editMode());
+  }
 
   addSelected(node: DocumentNode) {
     this.selected.set([...this.selected(), node]);

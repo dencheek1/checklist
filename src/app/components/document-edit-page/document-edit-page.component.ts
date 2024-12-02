@@ -96,7 +96,7 @@ export class DocumentEditPageComponent {
 
   addToSelected(node: DocumentNode) {
     this.preview.addToSelected(node);
-    this.preview.clearSelected();
+    // this.preview.clearSelected();
   }
 
   addAfterSelected(node: DocumentNode) {
