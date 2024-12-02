@@ -4,6 +4,8 @@ import {
   Component,
   effect,
   forwardRef,
+  HostBinding,
+  HostListener,
   inject,
   Input,
   OnInit,
@@ -29,6 +31,13 @@ export class DocumentViewComponent implements OnInit {
       });
   }
 
+  @HostListener('keydown', ['$event'])
+  keyPress(ev: KeyboardEvent) {
+console.log(ev)
+  }
+
+  focus(e: Event){
+  }
   // cdr = inject(ChangeDetectorRef);
   // preview = inject(PreviewService);
 
