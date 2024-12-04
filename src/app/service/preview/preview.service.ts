@@ -11,9 +11,21 @@ export class PreviewService {
   readonly document = signal<DocumentNode>({} as DocumentNode);
   readonly selected = signal<DocumentNode[]>([]);
   readonly editMode = signal<Boolean>(false);
+  readonly edited = signal<DocumentNode>({} as DocumentNode);
 
   toggleEditMode(){
     this.editMode.set(!this.editMode());
+  }
+
+  setEdited(node: DocumentNode){
+    this.edited.set(node);
+    this.editMode.set(true);
+  }
+
+  finishEdit(text: string){
+    this.updateNodeData(this.edited(), text);
+    this.edited.set({} as DocumentNode);
+    this.editMode.set(false);
   }
 
   addSelected(node: DocumentNode) {
@@ -120,5 +132,13 @@ export class PreviewService {
     }
 
     this.document.set(structuredClone(document));
+  }
+
+  updateNodeData(node: DocumentNode, newData: string){
+    let doc = this.document();
+    let parent = this.getParent( doc, node );
+    let nd = parent?.children.find( el => el == node);
+    if(nd) nd.data = newData;
+    this.document.set(doc);
   }
 }

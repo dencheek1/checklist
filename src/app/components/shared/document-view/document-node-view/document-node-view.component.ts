@@ -41,8 +41,10 @@ export class DocumentNodeViewComponent implements OnInit, OnChanges {
   public leafClasses = signal<Record<string, boolean>>({ box: false });
   public removeOpacity = signal<number>(0);
   public ne = NodeType;
-  
+
   private preview = inject(PreviewService);
+
+  public editNode = this.preview.edited;
 
   constructor() {
     effect(
@@ -103,8 +105,8 @@ export class DocumentNodeViewComponent implements OnInit, OnChanges {
     this.preview.selected().includes(this.node())
       ? this.preview.clearSelected()
       : event.shiftKey
-        ? this.preview.addSelected(node)
-        : this.preview.setSelected([node]);
+      ? this.preview.addSelected(node)
+      : this.preview.setSelected([node]);
     this.cdr.markForCheck();
   }
 
@@ -126,7 +128,7 @@ export class DocumentNodeViewComponent implements OnInit, OnChanges {
   // this method initialises class variable
   buildClassObject() {
     //TODO do something with common properties. make an enum for this stuf.
-    // * completed  
+    // * completed
     let classes = structuredClone(this.node().properties) as Record<
       string,
       boolean
@@ -134,14 +136,24 @@ export class DocumentNodeViewComponent implements OnInit, OnChanges {
     this.leafClasses.set(classes);
   }
 
-
   // TODO make sain div selection and focus
-  mufleEvent(e: MouseEvent){
-    if(!e.ctrlKey)e.stopPropagation();
+  mufleEvent(e: MouseEvent) {
+    if (!e.ctrlKey) e.stopPropagation();
     else (e.target as HTMLElement).focus();
   }
 
-  selectEvent(){
-    console.log('editable selected');
+  selectEvent(event: Event) {
+    console.log((event.target as HTMLElement).textContent);
+    this.save(event);
+  }
+  edit(e: Event) {
+    this.preview.setEdited(this.node());
+    this.preview.clearSelected();
+    (e.target as HTMLElement).focus();
+  }
+
+  save(e: Event) {
+    let text = (e.target as HTMLElement).textContent;
+    if (text) this.preview.finishEdit(text);
   }
 }
